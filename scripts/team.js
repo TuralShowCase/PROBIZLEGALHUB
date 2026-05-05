@@ -11,6 +11,14 @@ window.PROBIZ = window.PROBIZ || {};
 // TEAM MODULE
 // =============================================================================
 PROBIZ.team = (function () {
+  // Compute relative path to /images/ from the current page depth
+  const _imgBase = (function () {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    const langIdx = parts.findIndex(p => ['az', 'en', 'ru'].includes(p));
+    if (langIdx === -1) return '/images/';
+    return '../'.repeat(parts.length - langIdx) + 'images/';
+  })();
+
   // Simple HTML sanitizer to prevent XSS
   const _sanitize = (html) => {
     const div = document.createElement("div");
@@ -38,7 +46,7 @@ PROBIZ.team = (function () {
       shortName: "Zeynalov Elşən",
       role: "Direktor | Vəkil",
       roleKey: "team.role_director",
-      img: "/images/Zeynalov Elşən.avif",
+      img: _imgBase + "Zeynalov Elşən.avif",
       objectPosition: "center 25%",
       practice: ["Arbitraj hüququ", "Korporativ hüquq", "Müqavilələr hüququ"],
       practiceKeys: ["team.practice_arbitraj", "team.practice_korporativ", "team.practice_muqavile"],
@@ -57,7 +65,7 @@ PROBIZ.team = (function () {
       shortName: "Abdullayeva Arzu",
       role: "Hüquqşünas",
       roleKey: "team.role_legal_counsel",
-      img: "/images/Abdullayeva Arzu.avif",
+      img: _imgBase + "Abdullayeva Arzu.avif",
       practice: ["Hüquqi Təhlil", "Sənədlərin Tərtibi", "Məhkəmə İşinə Hazırlıq"],
       practiceKeys: ["team.practice_huquqi_tahlil", "team.practice_senedler", "team.practice_mehkeme_hazirlig"],
       bioKey: "team.abdullayeva_bio",
@@ -72,7 +80,7 @@ PROBIZ.team = (function () {
       shortName: "Babazadə İlqar",
       role: "Kadr İşləri üzrə Ekspert",
       roleKey: "team.role_hr_expert",
-      img: "/images/Babazadə İlqar.avif",
+      img: _imgBase + "Babazadə İlqar.avif",
       practice: ["Kadr İdarəetməsi", "Əmək Qanunvericiliyi", "İnsan Resursları"],
       practiceKeys: ["team.practice_kadr_idareetme", "team.practice_emek_qanun", "team.practice_insan_resurslari"],
       bioKey: "team.babazade_bio",
@@ -89,7 +97,7 @@ PROBIZ.team = (function () {
       shortName: "Məmmədova Şövkət",
       role: "İnsan Resursları üzrə Biznes Tərəfdaş",
       roleKey: "team.role_hr_partner",
-      img: "/images/Məmmədova Şövkət.avif",
+      img: _imgBase + "Məmmədova Şövkət.avif",
       practice: ["İR Strategiyası", "Təşkilati İnkişaf", "Kadr Proseslərinin Analizi"],
       practiceKeys: ["team.practice_ir_strategiya", "team.practice_teshkilati_inkisaf", "team.practice_kadr_analiz"],
       bioKey: "team.mammedova_bio",
@@ -106,7 +114,7 @@ PROBIZ.team = (function () {
       shortName: "Zeynalova Gülşən",
       role: "İnsan Resursları üzrə Menecer",
       roleKey: "team.role_hr_manager",
-      img: "/images/gulsen-zeynalova.avif",
+      img: _imgBase + "gulsen-zeynalova.avif",
       objectPosition: "center 70%",
       practice: ["İşə Qəbul Prosesi", "Heyətin Qiymətləndirilməsi", "Performans Analizi"],
       practiceKeys: ["team.practice_ise_qebul", "team.practice_heyetin_qiymet", "team.practice_performans"],
@@ -122,7 +130,7 @@ PROBIZ.team = (function () {
       shortName: "Əliyev Sübhan",
       role: "Vəkil",
       roleKey: "team.role_advocate",
-      img: "/images/Əliyev Sübhan.avif",
+      img: _imgBase + "Əliyev Sübhan.avif",
       practice: ["Cinayət Hüququ", "Publik və İnzibati Hüquq", "Vergi Hüququ"],
       practiceKeys: ["team.practice_cinayat", "team.practice_publik_inzibati", "team.practice_vergi_huququ"],
       bioKey: "team.eliyev_bio",
@@ -143,7 +151,7 @@ PROBIZ.team = (function () {
       shortName: "Məmmədli Lalə",
       role: "Vəkil",
       roleKey: "team.role_advocate",
-      img: "/images/lale-memmedova.avif",
+      img: _imgBase + "lale-memmedova.avif",
       practice: ["Ailə Hüququ", "Gömrük Hüququ", "Publik və İnzibati Hüquq"],
       practiceKeys: ["team.practice_aile", "team.practice_gomruk", "team.practice_publik_inzibati"],
       bioKey: "team.memmedli_bio",
@@ -162,7 +170,7 @@ PROBIZ.team = (function () {
       shortName: "Əsgərov Xaliq",
       role: "Vəkil",
       roleKey: "team.role_advocate",
-      img: "/images/Əskərov Xaliq.avif",
+      img: _imgBase + "Əskərov Xaliq.avif",
       practice: ["Ailə Hüququ", "Cinayət Hüququ", "Əmək və Əmlak Hüququ"],
       practiceKeys: ["team.practice_aile", "team.practice_cinayat", "team.practice_emek_emlak"],
       bioKey: "team.esgerov_bio",
