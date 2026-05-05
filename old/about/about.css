@@ -1,0 +1,259 @@
+/* =============================================================================
+   ABOUT PAGE - UNIQUE CSS (about.css)
+   Page-specific styles only. Shared styles are in ../common/general.css
+   ============================================================================= */
+
+/* =============================================================================
+   1. HERO SECTION — base styles from .plh-page-hero in general.css
+   ============================================================================= */
+
+/* About-specific: tighter letter-spacing for authority */
+.about-hero h1 {
+  letter-spacing: -1px;
+}
+
+/* =============================================================================
+   2. IMAGE COMPOSITION
+   Overlapping dual-image layout with decorative accent block
+   ============================================================================= */
+.about-composition {
+  position: relative;
+  width: 100%;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+}
+
+.composition-main-img {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--plh-radius-lg);
+  overflow: hidden;
+  width: 85%;
+}
+
+.composition-main-img img {
+  width: 100%;
+  border-radius: var(--plh-radius-lg);
+  filter: grayscale(20%);
+  transition: filter 0.6s ease;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+
+@media (hover: hover) {
+  .composition-main-img:hover img {
+    filter: grayscale(0%);
+  }
+}
+@media (hover: none) {
+  .composition-main-img img {
+    filter: grayscale(0%);
+  }
+}
+
+.composition-detail-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 55%;
+  z-index: 3;
+  border: 8px solid white;
+  border-radius: var(--plh-radius-lg);
+  overflow: hidden;
+}
+
+.composition-detail-img img {
+  width: 100%;
+}
+
+.composition-back-accent {
+  position: absolute;
+  top: -1.25rem;
+  left: -1.25rem;
+  width: 40%;
+  height: 60%;
+  background-color: var(--plh-accent);
+  border-radius: var(--plh-radius-lg);
+  z-index: 1;
+  opacity: 0.15;
+}
+
+@media (max-width: 767px) {
+  .composition-detail-img {
+    border-width: 5px;
+    width: 50%;
+  }
+}
+
+/* =============================================================================
+   3. MANIFESTO TYPOGRAPHY & FOUNDER QUOTE
+   C-level authoritative text styles with high contrast and readable line-heights
+   ============================================================================= */
+.section-pre-title {
+  color: var(--plh-accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
+
+.section-title {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-family: var(--font-heading);
+}
+
+.manifesto-lead {
+  font-size: var(--fs-lead);
+  color: var(--plh-text-dark);
+  line-height: 1.8;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.manifesto-text {
+  color: var(--plh-text-dark);
+  line-height: 1.7;
+  font-size: var(--fs-body);
+  opacity: 0.8;
+}
+
+.founder-quote {
+  position: relative;
+  padding: 2.5rem 2rem 2.5rem 3.5rem;
+  margin: 2.5rem 0;
+  background: rgba(41, 169, 189, 0.04);
+  border-left: 4px solid var(--plh-accent);
+  border-radius: 0 var(--plh-radius-lg) var(--plh-radius-lg) 0;
+}
+
+.founder-quote-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1vw + 1rem, 1.4rem);
+  line-height: 1.7;
+  color: var(--plh-base);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.founder-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  font-size: 5.5rem;
+  color: rgba(41, 169, 189, 0.15);
+  font-family: var(--font-heading);
+  line-height: 1;
+}
+
+/* =============================================================================
+   4. THE PILLARS
+   Clean white 4-column card grid with watermark numbers + accent lines
+   ============================================================================= */
+
+/* ── Card Container ── */
+.pillar-card {
+  position: relative;
+  background: white;
+  border-radius: var(--plh-radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: var(--space-card-pd);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* ── Watermark Number (whisper-quiet) ── */
+.pillar-number {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-display);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Accent Icon Box ── */
+.pillar-icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: rgba(41, 169, 189, 0.08);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 0 0 rgba(41, 169, 189, 0);
+}
+
+.pillar-icon i,
+.pillar-icon svg {
+  font-size: var(--fs-h3);
+  color: var(--plh-accent);
+  transition: color 0.4s ease;
+}
+
+/* ── Card Typography ── */
+.pillar-card h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.pillar-card p {
+  color: var(--plh-text-muted);
+  margin-bottom: 1.5rem;
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+
+/* ── Bottom Accent Line ── */
+.pillar-accent-line {
+  margin-top: auto;
+  width: 40px;
+  height: 3px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── Hover State (Desktop only) ── */
+@media (hover: hover) {
+  .pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--plh-accent);
+    box-shadow: 0 20px 50px rgba(41, 169, 189, 0.1);
+  }
+
+  .pillar-card:hover .pillar-icon {
+    background: var(--plh-accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(41, 169, 189, 0.25);
+  }
+
+  .pillar-card:hover .pillar-icon i,
+  .pillar-card:hover .pillar-icon svg {
+    color: white;
+  }
+
+  .pillar-card:hover .pillar-accent-line {
+    width: 100%;
+  }
+}

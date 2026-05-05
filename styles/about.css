@@ -1,0 +1,267 @@
+/* =============================================================================
+   ABOUT PAGE - UNIQUE CSS (about.css)
+   Page-specific styles only. Shared styles are in ../common/general.css
+   ============================================================================= */
+
+/* =============================================================================
+   1. HERO SECTION — base styles from .plh-page-hero in general.css
+   ============================================================================= */
+
+/* About-specific: tighter letter-spacing for authority */
+.about-hero h1 {
+  letter-spacing: -1px;
+}
+
+/* =============================================================================
+   2. MANIFESTO DARK PANEL
+   Dark authority panel — typography-driven, no images required
+   ============================================================================= */
+.manifesto-dark-panel {
+  background: var(--plh-base);
+  border-radius: var(--plh-radius-lg);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative ring — top right */
+.manifesto-dark-panel::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(41, 169, 189, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Decorative ring — bottom left */
+.manifesto-dark-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgba(41, 169, 189, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.manifesto-panel-pretitle {
+  color: var(--plh-accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.manifesto-panel-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw + 0.5rem, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.manifesto-panel-divider {
+  width: 50px;
+  height: 3px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+.manifesto-panel-quote {
+  position: relative;
+  padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  margin: 0;
+}
+
+.manifesto-panel-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -1.25rem;
+  left: 1rem;
+  font-size: 4.5rem;
+  color: var(--plh-accent);
+  opacity: 0.35;
+  font-family: var(--font-heading);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.manifesto-panel-quote p {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1vw + 0.85rem, 1.2rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.78);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .manifesto-dark-panel {
+    min-height: 320px;
+  }
+}
+
+/* =============================================================================
+   3. MANIFESTO TYPOGRAPHY & FOUNDER QUOTE
+   C-level authoritative text styles with high contrast and readable line-heights
+   ============================================================================= */
+.section-pre-title {
+  color: var(--plh-accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
+
+.section-title {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-family: var(--font-heading);
+}
+
+.manifesto-lead {
+  font-size: var(--fs-lead);
+  color: var(--plh-text-dark);
+  line-height: 1.8;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.manifesto-text {
+  color: var(--plh-text-dark);
+  line-height: 1.7;
+  font-size: var(--fs-body);
+  opacity: 0.8;
+}
+
+
+/* =============================================================================
+   4. THE PILLARS
+   Clean white 4-column card grid with watermark numbers + accent lines
+   ============================================================================= */
+
+/* ── Card Container ── */
+.pillar-card {
+  position: relative;
+  background: white;
+  border-radius: var(--plh-radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: var(--space-card-pd);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* ── Watermark Number (whisper-quiet) ── */
+.pillar-number {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-display);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Accent Icon Box ── */
+.pillar-icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: rgba(41, 169, 189, 0.08);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 0 0 rgba(41, 169, 189, 0);
+}
+
+.pillar-icon i,
+.pillar-icon svg {
+  font-size: var(--fs-h3);
+  color: var(--plh-accent);
+  transition: color 0.4s ease;
+}
+
+/* ── Card Typography ── */
+.pillar-card h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.pillar-card p {
+  color: var(--plh-text-muted);
+  margin-bottom: 1.5rem;
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+
+/* ── Bottom Accent Line ── */
+.pillar-accent-line {
+  margin-top: auto;
+  width: 40px;
+  height: 3px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── Russian: long words need smaller text + auto-hyphenation ── */
+html[lang="ru"] .pillar-card h3 {
+  font-size: calc(var(--fs-h4) * 0.85);
+  hyphens: auto;
+  word-break: break-word;
+}
+
+/* ── Hover State (Desktop only) ── */
+@media (hover: hover) {
+  .pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--plh-accent);
+    box-shadow: 0 20px 50px rgba(41, 169, 189, 0.1);
+  }
+
+  .pillar-card:hover .pillar-icon {
+    background: var(--plh-accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(41, 169, 189, 0.25);
+  }
+
+  .pillar-card:hover .pillar-icon i,
+  .pillar-card:hover .pillar-icon svg {
+    color: white;
+  }
+
+  .pillar-card:hover .pillar-accent-line {
+    width: 100%;
+  }
+}

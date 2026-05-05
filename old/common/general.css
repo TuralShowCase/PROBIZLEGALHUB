@@ -1,0 +1,1604 @@
+/* =============================================================================
+   PROBIZ LEGAL HUB - SHARED CSS FRAMEWORK (general.css)
+   Centralized styles shared across all pages.
+   ============================================================================= */
+
+/* =============================================================================
+   1. CSS CUSTOM PROPERTIES (ROOT VARIABLES)
+   ============================================================================= */
+/* ==========================================
+   GLOBAL & BASE STYLES
+   ========================================== */
+
+:root {
+  --plh-base: #092c3a;
+  --plh-accent: #29a9bd;
+  --plh-accent-glow: rgba(41, 169, 189, 0.25);
+
+  --plh-white: #ffffff;
+  --plh-light-bg: #f4f6f7;
+  --plh-text-dark: #121e24;
+  --plh-text-muted: #5e6d75;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-brand: "Cinzel", serif;
+
+  --plh-radius-sm: 4px;
+  --plh-radius-lg: 12px;
+
+  --plh-footer-bg: #061e26;
+  --plh-footer-text: #dcecf0;
+  --plh-partner-green: #34ba61;
+
+  /* ── Fluid Typography Scale ── */
+  --fs-display: clamp(2.25rem, 1.5rem + 3.2vw, 5rem);
+  --fs-h1: clamp(2rem, 1.25rem + 2.5vw, 4rem);
+  --fs-h2: clamp(1.75rem, 1.1rem + 2vw, 2.75rem);
+  --fs-h3: clamp(1.35rem, 1rem + 1.2vw, 2.15rem);
+  --fs-h4: clamp(1.15rem, 0.95rem + 0.7vw, 1.75rem);
+  --fs-h5: clamp(1rem, 0.9rem + 0.35vw, 1.35rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.15vw, 1.125rem);
+  --fs-lead: clamp(1.05rem, 0.95rem + 0.35vw, 1.35rem);
+  --fs-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.95rem);
+  --fs-nav: clamp(0.95rem, 0.75rem + 0.5vw, 1.35rem);
+  --fs-xs: clamp(
+    0.75rem,
+    1.5vw + 0.5rem,
+    0.95rem
+  ); /* For micro-nav and badges */
+  --fs-h6: clamp(1rem, 0.9rem + 0.2vw, 1.15rem);
+
+  /* ── Fluid Spacing Scale ── */
+  --space-section: clamp(3rem, 2rem + 3vw, 6rem);
+  --space-lg: clamp(2rem, 1.5rem + 1.5vw, 4rem);
+  --space-md: clamp(1rem, 0.75rem + 0.75vw, 2rem);
+  --space-card-pd: clamp(
+    24px,
+    2vw + 16px,
+    40px
+  ); /* Internal padding for bento/pillar/team cards */
+
+  /* ── Fluid Component Gaps ── */
+  --space-gap-lg: clamp(20px, 2vw + 10px, 30px);
+  --space-gap-md: clamp(15px, 1.5vw + 8px, 24px);
+  --space-gap-sm: clamp(8px, 1vw + 5px, 16px);
+
+  /* ── Fluid Component Icons ── */
+  --icon-size-lg: clamp(48px, 5vw + 32px, 64px); /* For bento/favori */
+  --icon-size-md: clamp(40px, 4vw + 24px, 56px); /* For normal features */
+}
+
+/* =============================================================================
+   2. BASE RESET & TYPOGRAPHY
+   ============================================================================= */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+html {
+  font-size: 16px; /* Locked floor — never below 16px for a11y */
+}
+
+body {
+  background-color: var(--plh-white);
+  color: var(--plh-text-dark);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+
+/* Accessibility: ensure no text drops below 16px */
+small,
+.small {
+  font-size: 0.875em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--plh-base);
+}
+
+/* Fluid heading sizes — no breakpoint needed */
+h1,
+.h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+h2,
+.h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+h3,
+.h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+h4,
+.h4 {
+  font-size: var(--fs-h4);
+  line-height: 1.35;
+}
+h5,
+.h5 {
+  font-size: var(--fs-h5);
+}
+h6,
+.h6 {
+  font-size: var(--fs-h6);
+}
+
+.display-1 {
+  font-size: var(--fs-display);
+}
+.display-2 {
+  font-size: clamp(2rem, 1.35rem + 2.8vw, 4rem);
+}
+.display-3 {
+  font-size: clamp(1.85rem, 1.2rem + 2.2vw, 3.5rem);
+}
+.display-4 {
+  font-size: clamp(1.65rem, 1.1rem + 1.8vw, 3rem);
+}
+.display-5 {
+  font-size: clamp(1.5rem, 1rem + 1.5vw, 2.75rem);
+}
+.display-6 {
+  font-size: clamp(1.35rem, 0.95rem + 1.2vw, 2.25rem);
+}
+
+p.lead {
+  font-size: var(--fs-lead);
+  font-weight: 300;
+  line-height: 1.6;
+}
+p {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* =============================================================================
+   3. UTILITY CLASSES
+   ============================================================================= */
+.text-accent {
+  color: var(--plh-accent) !important;
+}
+.text-white {
+  color: var(--plh-white) !important;
+}
+.bg-light-section {
+  background-color: var(--plh-light-bg);
+}
+.border-white-10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+.opacity-75 {
+  opacity: 0.75;
+}
+.opacity-25 {
+  opacity: 0.25;
+}
+.opacity-10 {
+  opacity: 0.1;
+}
+
+.section-padding {
+  padding: var(--space-section) 0;
+}
+.text-caps {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.lh-1 {
+  line-height: 1;
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+
+@media (hover: hover) {
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  border-radius: var(--plh-radius-lg);
+  transition: all 0.4s ease;
+}
+@media (hover: hover) {
+  .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    border-color: var(--plh-accent);
+  }
+}
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(13, 59, 76, 0.15) !important;
+}
+
+/* =============================================================================
+   4. BUTTON STYLES
+   ============================================================================= */
+.btn-accent {
+  background-color: var(--plh-accent);
+  color: white;
+  font-weight: 700;
+  padding: clamp(0.75rem, 0.5vw + 0.625rem, 0.9375rem)
+    clamp(1.5rem, 1vw + 1.25rem, 2.1875rem);
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  transition: 0.3s;
+}
+@media (hover: hover) {
+  .btn-accent:hover {
+    background-color: var(--plh-base);
+    color: white;
+  }
+}
+
+.btn-outline-white {
+  border: 1px solid white;
+  color: white;
+  padding: clamp(0.75rem, 0.5vw + 0.625rem, 0.9375rem)
+    clamp(1.5rem, 1vw + 1.25rem, 2.1875rem);
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+@media (hover: hover) {
+  .btn-outline-white:hover {
+    background-color: white;
+    color: var(--plh-base);
+  }
+}
+
+.btn-outline-dark {
+  border: 1px solid var(--plh-base);
+  color: var(--plh-base);
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+@media (hover: hover) {
+  .btn-outline-dark:hover {
+    background-color: var(--plh-base);
+    color: white;
+  }
+}
+
+/* =============================================================================
+   5. WHATSAPP STICKY BAR
+   ============================================================================= */
+.mobile-whatsapp-sticky {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  margin-bottom: -1px; /* Fix sub-pixel rendering gaps */
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.4s ease-in-out;
+  display: flex;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.mobile-whatsapp-sticky.cta-visible {
+  transform: translateY(0);
+}
+
+body.menu-open .mobile-whatsapp-sticky {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(100%) !important;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-whatsapp-sticky {
+    animation: none;
+    transform: translateY(0);
+  }
+}
+
+.sticky-cta-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white !important;
+  text-decoration: none;
+  padding: 0.875rem 0.625rem;
+  font-weight: 500;
+  font-size: clamp(0.85rem, 2vw + 0.6rem, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  transition: background-color 0.3s ease;
+  margin: 0 !important; /* Ensure no margin spacing */
+  line-height: normal; /* Prevent line-height gaps */
+}
+
+.btn-call {
+  background-color: var(--plh-base); /* Dark Blue/Green Base */
+}
+
+.btn-whatsapp {
+  background-color: var(--plh-accent); /* Brand Accent Color for Premium Look */
+}
+
+.sticky-cta-btn i {
+  font-size: 1.3rem;
+}
+@media (hover: hover) {
+  .sticky-cta-btn:hover {
+    filter: brightness(1.1);
+  }
+}
+
+/* =============================================================================
+   6. NAVBAR STYLES
+   ============================================================================= */
+/* ==========================================
+   NAVIGATION STYLES
+   ========================================== */
+
+.plh-nav {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  padding: clamp(0.75rem, 1vw + 0.5rem, 2.1875rem)
+    clamp(0.9375rem, 2vw + 0.625rem, 2.5rem);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.plh-nav.nav-scrolled {
+  background-color: rgba(13, 59, 76, 0.98) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(0.5rem, 0.5vw + 0.3125rem, 0.75rem)
+    clamp(0.9375rem, 2vw + 0.625rem, 2.5rem);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Fluid Logo */
+.nav-logo {
+  height: clamp(65px, 6vw + 40px, 140px);
+  width: auto;
+  transition: height 0.4s ease;
+}
+.plh-nav.nav-scrolled .nav-logo {
+  height: clamp(50px, 4vw + 20px, 90px);
+}
+
+/* Fluid Brand Divider */
+.brand-divider {
+  height: clamp(25px, 2vw + 20px, 55px);
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: height 0.4s ease;
+  margin-top: clamp(0px, 0.5vw, 10px);
+}
+.plh-nav.nav-scrolled .brand-divider {
+  height: clamp(20px, 1.5vw + 10px, 35px);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Fluid Brand Title */
+.brand-text .brand-title {
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.5vw + 0.6rem, 2rem);
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  color: var(--plh-white);
+  text-transform: uppercase;
+  transition: font-size 0.4s ease;
+  display: inline-block;
+  border-bottom: 2px solid var(--plh-white);
+  padding-bottom: 0.375rem;
+  padding-top: 0.625rem;
+}
+.plh-nav.nav-scrolled .brand-text .brand-title {
+  font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.45rem);
+  padding-bottom: 4px;
+}
+
+/* navbar togler */
+.navbar-toggler {
+  padding: 0 !important;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  font-size: var(--fs-nav);
+  padding: clamp(5px, 0.5vw + 3px, 10px) clamp(8px, 0.5vw + 5px, 15px) !important;
+  transition:
+    color 0.3s ease,
+    font-size 0.4s ease;
+}
+.plh-nav.nav-scrolled .navbar-nav .nav-link {
+  font-size: clamp(0.85rem, 0.5vw + 0.7rem, 1.15rem);
+}
+
+/* Redesigned Dropdown Styles */
+.plh-nav .dropdown-toggle::after {
+  display: none !important; /* Remove default bootstrap caret */
+}
+
+/* Custom Dropdown Indicator Icon */
+.dropdown-indicator {
+  display: none;
+  opacity: 0;
+  width: 0;
+  transform: translateX(-5px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 0.8em;
+  margin-left: 0;
+}
+
+/* Show icon on hover (Desktop only) */
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-indicator {
+    opacity: 1;
+    width: auto;
+    transform: translateX(0);
+    margin-left: 5px;
+    display: inline-block;
+  }
+
+  /* Make dropdown active on hover */
+  .nav-item.dropdown:hover .dropdown-menu,
+  .nav-utilities .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Ensure link color changes on hover */
+@media (hover: hover) {
+  .navbar-nav .nav-link:hover {
+    color: var(--plh-accent) !important;
+  }
+}
+
+/* Dropdown Styles */
+.plh-nav .dropdown-toggle {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: var(--fs-nav);
+  /* padding inherited from .nav-link to maintain uniform spacing */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (hover: hover) {
+  .plh-nav .dropdown-toggle:hover,
+  .plh-nav .dropdown-toggle:focus {
+    color: var(--plh-accent) !important;
+  }
+}
+.plh-nav.nav-scrolled .dropdown-toggle {
+  font-size: clamp(0.85rem, 0.5vw + 0.7rem, 1.15rem);
+}
+
+.dropdown-menu {
+  background-color: rgba(13, 59, 76, 0.98) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--plh-accent) !important;
+  border-radius: 4px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 0;
+  margin-top: 0.625rem !important;
+  z-index: 9999;
+  min-width: 15rem;
+
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Fix for hover gap: Transparent bridge */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  display: block;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (min-width: 992px) {
+  .dropdown-menu.dropdown-mega {
+    min-width: min(90vw, 62rem);
+    padding: 1rem 0;
+    left: 50%;
+    margin-left: max(
+      -45vw,
+      -31rem
+    ); /* Center perfectly relative to the parent */
+  }
+}
+
+.dropdown-menu .dropdown-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: clamp(8px, 0.4vw + 5px, 10px) 20px;
+  font-weight: 500;
+  font-size: clamp(0.85rem, 1vw + 0.5rem, 1.05rem);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 2px solid transparent;
+}
+
+.plh-nav.nav-scrolled .dropdown-menu .dropdown-item {
+  font-size: clamp(0.8rem, 0.3vw + 0.6rem, 0.95rem);
+  padding: clamp(6px, 0.3vw + 4px, 8px) 20px;
+}
+
+/* Mega menu: allow long translations (e.g. Russian) to wrap cleanly */
+.dropdown-mega .dropdown-item {
+  white-space: normal;
+  align-items: flex-start;
+}
+.dropdown-mega .dropdown-item i,
+.dropdown-mega .dropdown-item svg {
+  margin-top: 2px; /* keep icon aligned with first text line */
+}
+
+.dropdown-menu .dropdown-item i,
+.dropdown-menu .dropdown-item svg {
+  color: var(--plh-accent);
+  transition: transform 0.3s ease;
+  font-size: 1.1em;
+  flex-shrink: 0;
+  margin-right: 0 !important; /* Managed by gap */
+}
+/* @media (hover: hover) { */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item.active {
+  background-color: rgba(41, 169, 189, 0.1) !important;
+  color: #fff !important;
+  border-left-color: var(--plh-accent);
+  padding-left: 25px;
+}
+.dropdown-menu .dropdown-item.active {
+  background-color: rgba(41, 169, 189, 0.2) !important;
+  color: var(--plh-accent) !important;
+}
+.dropdown-menu .dropdown-item:hover i,
+.dropdown-menu .dropdown-item.active i,
+.dropdown-menu .dropdown-item:hover svg,
+.dropdown-menu .dropdown-item.active svg {
+  transform: translateX(3px);
+  filter: drop-shadow(0 0 5px var(--plh-accent-glow));
+  color: var(--plh-accent);
+}
+/* } */
+.dropdown-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* =============================================================================
+   6b. SHARED PAGE HERO (DRY — used by about, team, clients, services, service-detail)
+   ============================================================================= */
+.plh-page-hero {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(9, 44, 58, 0.95), rgba(9, 44, 58, 0.85)),
+    url("../images/headerbg.svg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding-top: clamp(130px, 15vh + 60px, 240px);
+  overflow: hidden;
+}
+
+.plh-page-hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plh-page-hero .breadcrumb {
+  margin-bottom: 1.5rem;
+}
+
+.plh-page-hero .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.plh-page-hero .breadcrumb-item a:hover {
+  color: var(--plh-accent);
+}
+
+.plh-page-hero .breadcrumb-item.active {
+  color: var(--plh-accent);
+}
+
+.plh-page-hero .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.plh-page-hero h1 {
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem !important;
+  max-width: 900px;
+}
+
+.plh-page-hero h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+}
+
+.plh-page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(41, 169, 189, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ==========================================
+   SHORT SCREEN RESPONSIVE FALLBACKS
+   ========================================== */
+@media (max-height: 800px) {
+  .plh-page-hero {
+    padding-top: clamp(80px, 10vh + 30px, 120px);
+  }
+}
+
+@media (max-height: 600px) {
+  .plh-page-hero {
+    padding-top: clamp(60px, 8vh + 20px, 100px);
+  }
+  .plh-page-hero p.lead {
+    display: none !important;
+  }
+  .plh-page-hero h1 {
+    font-size: clamp(1.5rem, 5vh + 0.5rem, 2.5rem) !important;
+  }
+}
+
+/* =============================================================================
+   6c. CTA DARK GRADIENT (shared across service detail + listing pages)
+   ============================================================================= */
+.cta-dark-gradient {
+  background: radial-gradient(
+    circle at top right,
+    #133b4b 0%,
+    var(--plh-base) 100%
+  );
+}
+
+/* =============================================================================
+   7. FOOTER STYLES
+   ============================================================================= */
+.plh-footer {
+  background-color: var(--plh-footer-bg);
+  padding: var(--space-section) 0 clamp(1.5rem, 1rem + 1vw, 2rem) 0;
+  margin-top: auto;
+  border-top: 4px solid var(--plh-accent);
+  color: var(--plh-footer-text);
+}
+.plh-footer h3,
+.plh-footer .text-accent {
+  color: white;
+}
+
+.brand-footer-text {
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1vw + 0.5rem, 1.8rem);
+  color: var(--plh-white);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  display: inline-block;
+  width: auto;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  margin-top: 10px;
+  padding-bottom: 5px;
+  line-height: 1.2;
+}
+
+.plh-footer img[src*="PLHLogo"],
+.plh-footer img[alt*="PROBIZ Loqosu"] {
+  width: clamp(80px, 4vw + 40px, 120px) !important;
+  height: auto;
+}
+
+.footer-link-anim {
+  transition: 0.3s;
+  display: inline-block;
+}
+@media (hover: hover) {
+  .footer-link-anim:hover {
+    color: var(--plh-accent) !important;
+    transform: translateX(8px);
+  }
+}
+
+.map-container {
+  border-radius: var(--plh-radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  filter: grayscale(100%);
+  height: clamp(15rem, 30vh, 17.5rem);
+  transition: 0.5s;
+}
+@media (hover: hover) {
+  .map-container:hover {
+    filter: grayscale(0%);
+    border-color: var(--plh-accent);
+  }
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  border-radius: 50%;
+  color: var(--plh-accent);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  border: none;
+  margin-right: 5px;
+  opacity: 0.9;
+}
+@media (hover: hover) {
+  .social-icon-btn:hover {
+    background: rgba(41, 169, 189, 0.1);
+    color: var(--plh-white);
+    transform: translateY(-3px);
+    text-shadow: 0 0 15px var(--plh-accent-glow);
+  }
+}
+
+/* =============================================================================
+   8. SCROLL PROGRESS BAR
+   ============================================================================= */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--plh-accent);
+  z-index: 10000;
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* =============================================================================
+   9. LENIS SMOOTH SCROLL
+   ============================================================================= */
+html.lenis {
+  margin: 0;
+  overflow-y: hidden;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* =============================================================================
+   10. MOBILE RESPONSIVE - NAVBAR COLLAPSE
+   ============================================================================= */
+@media (max-width: 991px) {
+  .container .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .navbar-collapse {
+    display: none !important; /* Hide old bootstrap collapse on mobile entirely */
+  }
+
+  /* -------------------------------------------
+     NEW 100VW OFFCANVAS & DRILL-DOWN STYLES
+     ------------------------------------------- */
+  .plh-offcanvas-menu {
+    position: fixed;
+    inset: 0; /* top/right/bottom/left: 0 — fills viewport on every browser */
+    background: rgba(9, 44, 58, 0.98); /* var(--plh-base) approx */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9990;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition:
+      transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+      opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+      visibility 0.6s;
+    overflow-x: hidden;
+  }
+
+  /* When Menu is Open */
+  body.menu-open .plh-offcanvas-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  /* The Slider Wrapper holding both Main and Sub panels */
+  .menu-slider-wrapper {
+    display: flex;
+    width: 200vw;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Shared attributes for panels */
+  .menu-panel {
+    width: 100vw;
+    height: 100%;
+    flex-shrink: 0;
+    padding: calc(var(--plh-nav-height, 80px) + 2rem) 1.5rem 2rem 1.5rem; /* Space for navbar */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-panel-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  /* Typography / Links inside Mobile Menu */
+  .plh-offcanvas-menu .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items */
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .plh-offcanvas-menu .nav-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative; /* Anchor for absolute chevron */
+  }
+
+  .plh-offcanvas-menu .nav-link {
+    font-family: var(--font-heading);
+    font-size: 1.75rem !important; /* Reduced from 2rem for elegance */
+    font-weight: 700;
+    color: var(--plh-white) !important;
+    padding: 0.5rem 1rem !important; /* Added padding for touch target */
+    line-height: 1.2;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* Compact view for small phones (e.g. iPhone SE) */
+  @media (max-width: 991px) and (max-height: 750px) {
+    .plh-offcanvas-menu .navbar-nav {
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .plh-offcanvas-menu .nav-link {
+      font-size: 1.5rem !important;
+    }
+    .nav-utilities {
+      margin-top: 1rem;
+    }
+    .nav-utilities .lang-toggle {
+      font-size: 0.95rem;
+      padding: 0.35rem 1rem;
+    }
+
+    /* Sub-panel: tier-1 compact */
+    .menu-panel {
+      padding-top: calc(var(--plh-nav-height, 80px) + 1.25rem);
+      padding-bottom: 1.5rem;
+    }
+    .sub-panel .dropdown-item {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.55rem;
+      margin-bottom: 1px;
+    }
+    .sub-panel .dropdown-item i,
+    .sub-panel .dropdown-item svg {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+    }
+    .sub-panel .mobile-sub-links {
+      margin-bottom: 0.75rem !important;
+    }
+    .sub-panel .menu-panel-content > span {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+  }
+
+  /* Extra compact for iPhone SE (375×667) and smaller */
+  @media (max-width: 991px) and (max-height: 700px) {
+    .menu-panel {
+      padding-top: calc(var(--plh-nav-height, 80px) + 0.75rem);
+      padding-bottom: 1.25rem;
+    }
+    .plh-offcanvas-menu .navbar-nav {
+      gap: 0.45rem;
+      margin-bottom: 0.75rem;
+    }
+    .plh-offcanvas-menu .nav-link {
+      font-size: 1.2rem !important;
+      padding: 0.25rem 0.75rem !important;
+    }
+    .nav-utilities {
+      margin-top: 0.5rem;
+    }
+    .nav-utilities .lang-toggle {
+      font-size: 0.85rem;
+      padding: 0.28rem 0.875rem;
+      gap: 0.35rem;
+    }
+    .mobile-menu-footer {
+      padding: 0.875rem 1rem;
+    }
+
+    /* Sub-panel: tier-2 compact (iPhone SE) */
+    .sub-panel .dropdown-item {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.5rem;
+      margin-bottom: 0;
+    }
+    .sub-panel .dropdown-item i,
+    .sub-panel .dropdown-item svg {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-right: 6px;
+      border-radius: 4px;
+    }
+    .mobile-sub-links {
+      padding: 0.3rem;
+    }
+    .sub-panel .mobile-sub-links {
+      margin-bottom: 0.4rem !important;
+    }
+    .sub-panel .menu-panel-content > span {
+      margin-top: 0.25rem !important;
+      margin-bottom: 0.35rem !important;
+    }
+    .sub-panel-header {
+      padding-bottom: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+  }
+
+  /* Narrow-width phones (≤390px) — tighter horizontal gutters in sub-panel */
+  @media (max-width: 390px) {
+    .menu-panel {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .sub-panel .dropdown-item {
+      gap: 0;
+    }
+  }
+
+  .plh-offcanvas-menu .nav-link i {
+    font-size: 1.2rem;
+    color: var(--plh-accent);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05); /* Match sub-panel icon style */
+    border-radius: 8px;
+  }
+
+  /* GSAP targets will animate opacity and transform */
+
+  .plh-offcanvas-menu .nav-link:hover,
+  .plh-offcanvas-menu .nav-link:active {
+    color: var(--plh-accent) !important;
+    transform: translateX(4px) translateY(0) !important; /* Added horizontal slide, keep vertical 0 from GSAP */
+  }
+
+  /* --- Mobile Utilities & Footer Enhancements --- */
+
+  .nav-utilities .lang-toggle {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: clamp(0.35rem, 1.2vh, 0.5rem) clamp(0.9rem, 3vw, 1.25rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: clamp(0.9rem, 2.8vw, 1.15rem);
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--plh-white) !important;
+    transition: all 0.3s ease;
+  }
+
+  .nav-utilities .lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(41, 169, 189, 0.3);
+    color: var(--plh-accent) !important;
+  }
+
+  /* Glassmorphism Mobile Footer Card */
+  .mobile-menu-footer {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Override inline top border */
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: auto;
+  }
+
+  .mobile-menu-footer a.text-decoration-none {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-footer a.text-decoration-none:hover {
+    transform: translateX(4px);
+    color: var(--plh-accent) !important;
+  }
+
+  .mobile-menu-footer a.text-decoration-none i {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-right: 12px !important;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-footer a.text-decoration-none:hover i {
+    background: var(--plh-accent);
+    color: var(--plh-base) !important;
+  }
+
+  /* Mobile Sub-Links Container (Glassmorphism Cards) */
+  .mobile-sub-links {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0.5rem;
+  }
+
+  /* Sub Panel Category Headers */
+  .sub-panel h6.text-uppercase {
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.7) !important;
+    opacity: 1 !important; /* Override inline opacity-50 */
+    margin-bottom: 0.75rem !important; /* Tighter spacing inside container */
+  }
+
+  /* Sub Panel specific styling */
+  .sub-panel .dropdown-item {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85) !important;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    background: transparent !important;
+    white-space: normal;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .sub-panel .dropdown-item i,
+  .sub-panel .dropdown-item svg {
+    color: var(--plh-accent);
+    flex-shrink: 0;
+    margin-right: 8px;
+    margin-top: 0;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .sub-panel .dropdown-item:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (hover: hover) {
+    .sub-panel .dropdown-item:hover {
+      background: rgba(255, 255, 255, 0.06) !important;
+      color: var(--plh-white) !important;
+      transform: translateX(4px);
+    }
+    .sub-panel .dropdown-item:hover i {
+      background: var(--plh-accent);
+      color: var(--plh-base);
+    }
+  }
+
+  /* BÜTÜN HÜQUQ XİDMƏTLƏRİ link */
+  .sub-panel .dropdown-item.text-accent {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--plh-accent) !important;
+  }
+
+  .sub-panel .dropdown-item.text-accent i {
+    background: transparent;
+    width: auto;
+    height: auto;
+    margin-right: 0;
+  }
+
+  @media (hover: hover) {
+    .sub-panel .dropdown-item.text-accent:hover i {
+      background: transparent;
+      color: var(--plh-accent);
+      transform: translateX(4px);
+    }
+  }
+
+  /* Reset toggle menu z-index to stay above offcanvas */
+  .navbar-toggler {
+    z-index: 9995;
+    position: relative;
+  }
+
+  /* CSS Animated Hamburger to X */
+  .hamburger-icon {
+    width: 28px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    z-index: 10000;
+  }
+
+  .hamburger-icon span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--plh-accent);
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: left center;
+  }
+
+  /* When menu is open, transform spans into an X */
+  body.menu-open .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(1px, -2px);
+  }
+
+  body.menu-open .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  body.menu-open .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(0px, 1px);
+  }
+
+  .nav-utilities {
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    /* justify-content: center; */
+  }
+  /* Mobile language selector — scale it up to match menu weight */
+  .nav-utilities .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    /* color: var(--plh-white) !important; */
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-utilities .lang-toggle:hover {
+    color: var(--plh-accent) !important;
+  }
+  .nav-utilities .lang-toggle .bi {
+    font-size: 1.3rem;
+  }
+  .nav-utilities .dropdown {
+    position: static;
+  }
+  .nav-utilities .dropdown-menu {
+    position: static !important;
+    width: 100%;
+    margin-top: 10px;
+    /* background: transparent !important; */
+    /* border: none !important; */
+    /* box-shadow: none !important; */
+  }
+  .dropdown-menu .dropdown-item {
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.2rem);
+  }
+}
+
+@media (min-width: 992px) {
+  /* Restore the desktop flex layout inside the navbar */
+  .plh-offcanvas-menu {
+    display: flex !important;
+    flex-basis: auto;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  /* Strip out intermediate mobile wrappers from the layout tree */
+  .menu-slider-wrapper,
+  .menu-panel.main-panel,
+  .menu-panel-content {
+    display: contents;
+  }
+
+  /* Hide the sub-panel and mobile footer completely on desktop */
+  .menu-panel.sub-panel,
+  .mobile-menu-footer {
+    display: none !important;
+  }
+
+  /* Reset GSAP opacity/transform settings if resized from mobile */
+  .plh-offcanvas-menu .nav-link {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .nav-utilities .dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 15px !important;
+  }
+}
+
+/* ── Compact desktop range: 992–1200px (e.g. 1024px laptops) ──
+   Reduces nav link size & horizontal padding so all items fit in one row.
+   Russian translations are longest — sizes here must accommodate them. */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .plh-nav {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Strip Bootstrap px-lg-5 so the full 992px is usable */
+  .plh-nav .container-fluid {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .navbar-nav .nav-link,
+  .plh-nav .dropdown-toggle {
+    font-size: 1rem !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+  .brand-text .brand-title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  .nav-logo {
+    height: 90px;
+  }
+  .brand-divider {
+    margin-left: 0.4rem !important;
+    margin-right: 0.4rem !important;
+  }
+  .navbar-nav {
+    gap: 0 !important;
+  }
+}
+
+/* Mobile navbar — only essential collapse behavior, sizing is handled by clamp() */
+@media (max-width: 991px) {
+  /* Prevent hamburger from wrapping to a new line */
+  .plh-nav .container-fluid {
+    flex-wrap: nowrap !important;
+  }
+
+  /* Allow brand to shrink so toggler stays in line */
+  .navbar-brand {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+
+  .navbar-toggler {
+    flex-shrink: 0; /* Toggler must never shrink */
+  }
+
+  .navbar-toggler i {
+    font-size: clamp(1.75rem, 1vw + 1.5rem, 2.5rem);
+    transition: font-size 0.4s ease;
+  }
+}
+
+/* Extra compact brand for very small screens (iPhone SE, 375px) */
+@media (max-width: 400px) {
+  .nav-logo {
+    height: 72px;
+  }
+
+  .brand-divider {
+    height: 20px;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+  }
+
+  .brand-text .brand-title {
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 3px;
+    padding-top: 6px;
+  }
+  .plh-nav.nav-scrolled .brand-text .brand-title {
+    font-size: 1rem;
+  }
+}
+
+/* Extra footer bottom padding on mobile to clear sticky CTA */
+@media (max-width: 767.98px) {
+  .plh-footer {
+    padding-bottom: 80px !important;
+  }
+}
+
+/* Mobile button sizing — override Bootstrap px-5/py-3 utilities which add too much padding on small screens */
+@media (max-width: 767px) {
+  .btn-accent,
+  .btn-outline-white {
+    padding-left: clamp(1.25rem, 5vw, 1.75rem) !important;
+    padding-right: clamp(1.25rem, 5vw, 1.75rem) !important;
+    padding-top: 0.625rem !important;
+    padding-bottom: 0.625rem !important;
+    font-size: clamp(0.78rem, 2.5vw, 0.88rem) !important;
+    letter-spacing: 0.5px !important;
+  }
+  .btn-outline-dark {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* =============================================================================
+   11. ANIMATION HELPER CLASSES
+   ============================================================================= */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* =============================================================================
+   13. FOOTER PARTNER CARD
+   ============================================================================= */
+.plh-footer .footer-partner-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  text-decoration: none;
+  background: rgba(41, 169, 189, 0.05);
+  border: 1px solid rgba(41, 169, 189, 0.15);
+  border-radius: var(--plh-radius-lg, 12px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: fit-content;
+}
+
+.plh-footer .partner-logo-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 40px;
+}
+
+.plh-footer .partner-logo-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.plh-footer .partner-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.plh-footer .partner-card-title {
+  color: var(--plh-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plh-footer .partner-ext-icon {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.plh-footer .partner-card-slogan {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media (hover: hover) {
+  .plh-footer .footer-partner-card:hover {
+    background: rgba(41, 169, 189, 0.12);
+    border-color: rgba(41, 169, 189, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .plh-footer .footer-partner-card:hover .partner-ext-icon {
+    opacity: 1;
+    color: var(--plh-accent);
+  }
+}
+
+/* Lucide Icons Global Sizing */
+.lucide {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+/* =============================================================================
+   14. ULTRA-WIDE / 4K DISPLAY CAPS
+   ============================================================================= */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px !important;
+  }
+  .container-fluid {
+    max-width: 2400px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    max-width: 1800px !important;
+  }
+  .container-fluid {
+    max-width: 2800px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,249 @@
+/* =============================================================================
+   CLIENTS SHOWCASE PAGE - UNIQUE CSS (clients.css)
+   Page-specific styles only. Shared styles are in ../common/general.css
+   ============================================================================= */
+
+/* Hero overrides — base styles come from .plh-page-hero in general.css */
+
+/* =============================================================================
+   3. CLIENT LOGO GRID
+   Responsive grid with grayscale → full-color hover transitions
+   ============================================================================= */
+.clients-grid-section {
+  padding: var(--space-section) 0;
+}
+
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: clamp(1rem, 1.5vw + 0.5rem, 1.75rem);
+}
+
+.client-grid-item {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--plh-radius-lg);
+  padding: clamp(1.5rem, 2vw + 0.5rem, 2.5rem) clamp(1rem, 1.5vw + 0.5rem, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.client-grid-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.client-grid-item img {
+  max-width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(65%) opacity(0.85);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+
+@media (hover: hover) {
+  .client-grid-item:hover {
+    transform: translateY(-6px);
+    border-color: var(--plh-accent);
+    box-shadow: 0 20px 50px rgba(41, 169, 189, 0.12);
+  }
+
+  .client-grid-item:hover::after {
+    width: 60%;
+  }
+
+  .client-grid-item:hover img {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 575px) {
+  .client-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .client-grid-item {
+    min-height: 90px;
+  }
+  .client-grid-item img {
+    max-height: 45px;
+  }
+}
+
+/* =============================================================================
+   4. INFINITE MARQUEE — Dual-row bidirectional scroll
+   ============================================================================= */
+@keyframes marqueeScrollRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeScrollLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (hover: hover) {
+  .marquee-logo:hover img {
+    filter: grayscale(0%) opacity(1);
+  }
+  .marquee-logo:hover {
+    border-color: rgba(41, 169, 189, 0.2);
+    box-shadow: 0 8px 24px rgba(41, 169, 189, 0.08);
+  }
+}
+
+/* Full color on touch devices (no hover capability) */
+@media (hover: none) {
+  .client-grid-item img {
+    filter: grayscale(0%) opacity(1);
+  }
+}
+
+/* =============================================================================
+   5. TESTIMONIALS SECTION
+   Premium quote cards with star ratings
+   ============================================================================= */
+.clients-testimonials-section {
+  padding: var(--space-section) 0;
+  background: white;
+}
+
+.testimonial-card {
+  background: var(--plh-light-bg);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--plh-radius-lg);
+  padding: var(--space-card-pd);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.testimonial-card::before {
+  content: "\201C";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 8vw + 2rem, 8rem);
+  color: rgba(41, 169, 189, 0.07);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.testimonial-stars i {
+  color: var(--plh-accent);
+  font-size: 0.9rem;
+}
+
+.testimonial-quote {
+  font-size: var(--fs-body);
+  color: var(--plh-text-dark);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.testimonial-author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--plh-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.testimonial-author-info .author-name {
+  display: block;
+  font-weight: 700;
+  color: var(--plh-base);
+  font-size: var(--fs-body);
+}
+
+.testimonial-author-info .author-role {
+  font-size: var(--fs-small);
+  color: var(--plh-text-muted);
+}
+
+@media (hover: hover) {
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--plh-accent);
+    box-shadow: 0 20px 50px rgba(41, 169, 189, 0.1);
+  }
+}
+
+/* =============================================================================
+   6. CTA SECTION
+   Dark gradient call-to-action for conversions
+   ============================================================================= */
+.clients-cta {
+  background: radial-gradient(circle at top right, #133b4b 0%, #092c3a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.clients-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 80% 50%,
+    rgba(41, 169, 189, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}

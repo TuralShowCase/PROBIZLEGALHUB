@@ -1,0 +1,137 @@
+/* =============================================================================
+   SERVICES PAGE - CSS (services.css)
+   ============================================================================= */
+
+/* Hero overrides — base styles come from .plh-page-hero in general.css */
+
+/* =============================================================================
+   2. SERVICE GRID CARDS
+   ============================================================================= */
+.service-grid-card {
+  position: relative;
+  background: white;
+  border-radius: var(--plh-radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-grid-card .card-inner {
+  padding: var(--space-card-pd);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-grid-card .card-number {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-display);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.service-grid-card .card-icon-box {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: rgba(41, 169, 189, 0.08);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: background 0.4s ease;
+}
+
+.service-grid-card .card-icon-box i,
+.service-grid-card .card-icon-box svg {
+  font-size: var(--fs-h3);
+  color: var(--plh-accent);
+  transition: color 0.4s ease;
+}
+
+.service-grid-card .card-title {
+  font-size: var(--fs-h4);
+  color: var(--plh-base);
+  margin-bottom: 0.75rem;
+}
+
+.service-grid-card .card-desc {
+  color: var(--plh-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.service-grid-card .card-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--plh-accent);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: gap 0.3s ease;
+}
+
+.service-grid-card .card-link i {
+  transition: transform 0.3s ease;
+}
+
+.service-grid-card .card-accent-line {
+  width: 2.5rem;
+  height: 3px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Favori Badge */
+/* Hover States */
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+
+@media (hover: hover) {
+  .service-grid-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--plh-accent);
+    box-shadow: 0 20px 50px rgba(41, 169, 189, 0.1);
+  }
+
+  .service-grid-card:hover .card-icon-box {
+    background: var(--plh-accent);
+  }
+
+  .service-grid-card:hover .card-icon-box i,
+  .service-grid-card:hover .card-icon-box svg {
+    color: white;
+  }
+
+  .service-grid-card:hover .card-link i {
+    transform: translateX(4px);
+  }
+
+  .service-grid-card:hover .card-accent-line {
+    width: 100%;
+  }
+}

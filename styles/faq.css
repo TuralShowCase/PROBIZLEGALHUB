@@ -1,0 +1,224 @@
+/* =============================================================================
+   PROBIZ LEGAL HUB — PREMIUM FAQ ACCORDION COMPONENT (faq.css)
+   Shared, reusable component for all FAQ sections site-wide.
+   ============================================================================= */
+
+/* =============================================================================
+   1. FAQ SECTION WRAPPER
+   ============================================================================= */
+.plh-faq {
+  padding: var(--space-section) 0;
+  background-color: var(--plh-light-bg);
+}
+
+.plh-faq-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+}
+
+.plh-faq-header span {
+  color: var(--plh-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: var(--fs-small);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.plh-faq-header h2 {
+  color: var(--plh-text-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* =============================================================================
+   2. FAQ ITEM CARDS
+   ============================================================================= */
+.plh-faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 0.8vw + 6px, 18px);
+}
+
+.plh-faq-item {
+  background: var(--plh-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--plh-radius-lg);
+  overflow: hidden;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+
+@media (hover: hover) {
+  .plh-faq-item:hover {
+    border-color: rgba(41, 169, 189, 0.25);
+    box-shadow: 0 4px 20px rgba(41, 169, 189, 0.06);
+  }
+}
+
+.plh-faq-item.is-open {
+  border-color: rgba(41, 169, 189, 0.2);
+  box-shadow: 0 6px 24px rgba(9, 44, 58, 0.06);
+}
+
+/* =============================================================================
+   3. FAQ QUESTION BUTTON
+   ============================================================================= */
+.plh-faq-question {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1vw + 6px, 20px);
+  width: 100%;
+  padding: clamp(16px, 1.2vw + 10px, 24px) clamp(18px, 1.5vw + 10px, 28px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .plh-faq-question:hover {
+    background-color: rgba(41, 169, 189, 0.02);
+  }
+}
+
+/* Number badge */
+.plh-faq-num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(32px, 2vw + 22px, 42px);
+  height: clamp(32px, 2vw + 22px, 42px);
+  background: rgba(41, 169, 189, 0.08);
+  color: var(--plh-accent);
+  border-radius: 50%;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  font-family: var(--font-body);
+  letter-spacing: -0.5px;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.plh-faq-item.is-open .plh-faq-num {
+  background: var(--plh-accent);
+  color: var(--plh-white);
+}
+
+/* Question text */
+.plh-faq-question-text {
+  flex: 1;
+  font-size: clamp(0.95rem, 0.85rem + 0.35vw, 1.125rem);
+  font-weight: 600;
+  color: var(--plh-text-dark);
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.plh-faq-item.is-open .plh-faq-question-text {
+  color: var(--plh-base);
+}
+
+/* Chevron icon */
+.plh-faq-chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--plh-text-muted);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s ease;
+}
+
+.plh-faq-item.is-open .plh-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--plh-accent);
+}
+
+/* =============================================================================
+   4. FAQ ANSWER — SMOOTH HEIGHT ANIMATION
+   ============================================================================= */
+.plh-faq-answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plh-faq-item.is-open .plh-faq-answer-wrap {
+  grid-template-rows: 1fr;
+}
+
+.plh-faq-answer {
+  overflow: hidden;
+}
+
+.plh-faq-answer-inner {
+  padding: 0 clamp(18px, 1.5vw + 10px, 28px) clamp(16px, 1.2vw + 10px, 24px);
+  /* offset for the number badge width + gap */
+  padding-left: calc(
+    clamp(18px, 1.5vw + 10px, 28px) + clamp(32px, 2vw + 22px, 42px) +
+      clamp(12px, 1vw + 6px, 20px)
+  );
+}
+
+.plh-faq-answer-inner p {
+  color: var(--plh-text-muted);
+  font-size: var(--fs-body);
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Subtle top divider inside the answer */
+.plh-faq-answer-inner::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--plh-accent);
+  border-radius: 2px;
+  margin-bottom: clamp(10px, 0.8vw + 6px, 16px);
+  opacity: 0.4;
+}
+
+/* =============================================================================
+   5. INLINE VARIANT — for service detail pages (inside article content)
+   ============================================================================= */
+.plh-faq--inline {
+  padding: 0;
+  background: transparent;
+}
+
+.plh-faq--inline .plh-faq-header {
+  text-align: left;
+  margin-bottom: clamp(1.25rem, 1rem + 1vw, 2rem);
+}
+
+.plh-faq--inline .plh-faq-header h2 {
+  font-size: var(--fs-h2);
+}
+
+.plh-faq--inline .plh-faq-list {
+  max-width: 100%;
+}
+
+/* =============================================================================
+   6. RESPONSIVE
+   ============================================================================= */
+@media (max-width: 575px) {
+  .plh-faq-answer-inner {
+    /* On small screens, remove the left offset for readability */
+    padding-left: clamp(18px, 1.5vw + 10px, 28px);
+  }
+}
