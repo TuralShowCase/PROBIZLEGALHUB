@@ -109,8 +109,9 @@ PROBIZ.i18n = (function () {
 
     // Navigate to the same page in the new language folder
     const parts = window.location.pathname.split("/");
-    if (SUPPORTED.includes(parts[1])) {
-      parts[1] = lang;
+    const langIdx = parts.findIndex(p => SUPPORTED.includes(p));
+    if (langIdx !== -1) {
+      parts[langIdx] = lang;
       localStorage.setItem(STORAGE_KEY, lang);
       window.location.href = parts.join("/") || "/";
       return;
@@ -129,9 +130,10 @@ PROBIZ.i18n = (function () {
       return;
     }
 
-    // Detect language from URL path first (/az/, /en/, /ru/)
-    const urlLang = window.location.pathname.split("/")[1];
-    if (SUPPORTED.includes(urlLang)) {
+    // Detect language from URL path first (/az/, /en/, /ru/) — works at any depth
+    const urlParts = window.location.pathname.split("/");
+    const urlLang = urlParts.find(p => SUPPORTED.includes(p));
+    if (urlLang) {
       _lang = urlLang;
       localStorage.setItem(STORAGE_KEY, _lang);
     } else {
