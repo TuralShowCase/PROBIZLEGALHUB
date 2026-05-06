@@ -169,6 +169,13 @@
 /* =============================================================================
    5. MODAL STYLING
    ============================================================================= */
+
+/* Prevent Bootstrap .modal from intercepting mousewheel events;
+   wheel events must reach .modal-info-col which has overflow-y: auto */
+#teamModal {
+  overflow: hidden !important;
+}
+
 .modal-backdrop.show {
   opacity: 0.8;
   backdrop-filter: blur(5px);
@@ -179,6 +186,7 @@
   border-radius: var(--plh-radius-lg);
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-height: 90vh;
 }
 
 .team-modal-body {
@@ -283,5 +291,7 @@
 
   .modal-info-col {
     padding: var(--space-card-pd);
+    /* On mobile the image stacks above — reduce max-height to keep within 90vh */
+    max-height: calc(90vh - 56.25vw);
   }
 }

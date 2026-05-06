@@ -818,8 +818,6 @@
   max-width: 95%; /* Let images fill up to 95% of bounding box */
   width: auto;
   object-fit: contain;
-  filter: grayscale(65%);
-  opacity: 0.85;
   transition: all 0.4s ease;
 }
 
@@ -850,7 +848,6 @@
 }
 
 .client-logo-item:hover img {
-  filter: grayscale(0%);
   opacity: 1;
 }
 

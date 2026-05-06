@@ -50,7 +50,6 @@
   max-width: 100%;
   max-height: 60px;
   object-fit: contain;
-  filter: grayscale(65%) opacity(0.85);
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -70,7 +69,6 @@
   }
 
   .client-grid-item:hover img {
-    filter: grayscale(0%) opacity(1);
     transform: scale(1.08);
   }
 }
@@ -109,21 +107,12 @@
 }
 
 @media (hover: hover) {
-  .marquee-logo:hover img {
-    filter: grayscale(0%) opacity(1);
-  }
   .marquee-logo:hover {
     border-color: rgba(41, 169, 189, 0.2);
     box-shadow: 0 8px 24px rgba(41, 169, 189, 0.08);
   }
 }
 
-/* Full color on touch devices (no hover capability) */
-@media (hover: none) {
-  .client-grid-item img {
-    filter: grayscale(0%) opacity(1);
-  }
-}
 
 /* =============================================================================
    5. TESTIMONIALS SECTION

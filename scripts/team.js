@@ -313,10 +313,13 @@ PROBIZ.team = (function () {
 
     modalEl.addEventListener("shown.bs.modal", () => {
       if (whatsappBtn) whatsappBtn.style.display = "none";
+      // Stop Lenis so its wheel handler doesn't swallow scroll events inside the modal
+      if (window.PROBIZ._lenis) window.PROBIZ._lenis.stop();
     });
 
     modalEl.addEventListener("hidden.bs.modal", () => {
       if (whatsappBtn) whatsappBtn.style.display = "";
+      if (window.PROBIZ._lenis) window.PROBIZ._lenis.start();
     });
   };
 
