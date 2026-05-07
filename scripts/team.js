@@ -311,15 +311,71 @@ PROBIZ.team = (function () {
 
     const whatsappBtn = document.querySelector(".mobile-whatsapp-sticky");
 
+    // Smooth scroll state for the modal info column (desktop mouse wheel)
+    let _scrollTarget = 0;
+    let _scrollRaf = null;
+
+    // Touch scroll state for mobile
+    let _touchStartY = 0;
+
+    const _animateInfoCol = (infoCol) => {
+      const dist = _scrollTarget - infoCol.scrollTop;
+      if (Math.abs(dist) < 0.5) {
+        infoCol.scrollTop = _scrollTarget;
+        _scrollRaf = null;
+        return;
+      }
+      infoCol.scrollTop += dist * 0.12; // lerp factor — tweak for faster/slower feel
+      _scrollRaf = requestAnimationFrame(() => _animateInfoCol(infoCol));
+    };
+
+    // Intercept every wheel event on the modal overlay (covers full viewport).
+    // stopPropagation stops Lenis on window; preventDefault stops native page scroll.
+    // deltaY updates a target position; RAF loop lerps scrollTop toward it smoothly.
+    const _onModalWheel = (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const infoCol = modalEl.querySelector(".modal-info-col");
+      if (!infoCol) return;
+      let delta = e.deltaY;
+      if (e.deltaMode === 1) delta *= 24;
+      if (e.deltaMode === 2) delta *= infoCol.clientHeight;
+      const maxScroll = infoCol.scrollHeight - infoCol.clientHeight;
+      _scrollTarget = Math.max(0, Math.min(_scrollTarget + delta, maxScroll));
+      if (!_scrollRaf) _scrollRaf = requestAnimationFrame(() => _animateInfoCol(infoCol));
+    };
+
+    // Touch handlers — route touchmove anywhere on the modal to the info col
+    const _onModalTouchStart = (e) => {
+      _touchStartY = e.touches[0].clientY;
+    };
+
+    const _onModalTouchMove = (e) => {
+      const infoCol = modalEl.querySelector(".modal-info-col");
+      if (!infoCol) return;
+      const delta = _touchStartY - e.touches[0].clientY;
+      _touchStartY = e.touches[0].clientY;
+      const maxScroll = infoCol.scrollHeight - infoCol.clientHeight;
+      if (maxScroll <= 0) return; // nothing to scroll — let browser handle
+      e.preventDefault();
+      infoCol.scrollTop = Math.max(0, Math.min(infoCol.scrollTop + delta, maxScroll));
+    };
+
     modalEl.addEventListener("shown.bs.modal", () => {
       if (whatsappBtn) whatsappBtn.style.display = "none";
-      // Stop Lenis so its wheel handler doesn't swallow scroll events inside the modal
-      if (window.PROBIZ._lenis) window.PROBIZ._lenis.stop();
+      const infoCol = modalEl.querySelector(".modal-info-col");
+      _scrollTarget = infoCol ? infoCol.scrollTop : 0; // sync target to current position
+      modalEl.addEventListener("wheel", _onModalWheel, { passive: false });
+      modalEl.addEventListener("touchstart", _onModalTouchStart, { passive: true });
+      modalEl.addEventListener("touchmove", _onModalTouchMove, { passive: false });
     });
 
     modalEl.addEventListener("hidden.bs.modal", () => {
       if (whatsappBtn) whatsappBtn.style.display = "";
-      if (window.PROBIZ._lenis) window.PROBIZ._lenis.start();
+      modalEl.removeEventListener("wheel", _onModalWheel);
+      modalEl.removeEventListener("touchstart", _onModalTouchStart);
+      modalEl.removeEventListener("touchmove", _onModalTouchMove);
+      if (_scrollRaf) { cancelAnimationFrame(_scrollRaf); _scrollRaf = null; }
     });
   };
 

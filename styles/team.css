@@ -254,6 +254,13 @@
   background: var(--plh-accent);
 }
 
+/* Contact buttons — btn-sm is still too large inside the modal on desktop */
+.modal-info-col .btn-sm {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  letter-spacing: 0.02em;
+}
+
 .bio-text {
   font-size: var(--fs-body);
   color: var(--plh-text-dark);
@@ -291,7 +298,9 @@
 
   .modal-info-col {
     padding: var(--space-card-pd);
-    /* On mobile the image stacks above — reduce max-height to keep within 90vh */
+    /* Image stacks above at 16/9 ratio; cap info col to the remaining viewport space */
     max-height: calc(90vh - 56.25vw);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 }

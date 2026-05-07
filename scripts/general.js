@@ -111,8 +111,6 @@ PROBIZ.motion = (function () {
         content: document.body,
       });
 
-      // Expose globally so other modules can stop/start Lenis (e.g. modal pages)
-      window.PROBIZ._lenis = lenis;
 
       if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         lenis.on("scroll", ScrollTrigger.update);
